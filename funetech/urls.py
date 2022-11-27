@@ -13,6 +13,9 @@ from rest_framework.authtoken import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.views.decorators.csrf import csrf_exempt
+
+
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
@@ -22,5 +25,5 @@ router.register(r'homenagens', HomenagemViewSet, basename='Homenagem')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('api-token-auth/', views.obtain_auth_token, name='api-token-auth')
+    path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #para caso vá trabalhar com imagens
