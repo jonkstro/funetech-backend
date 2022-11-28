@@ -1,5 +1,6 @@
 
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -98,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'pt-BR'
+LANGUAGE_CODE = 'PT-BR'
 
 TIME_ZONE = 'America/Fortaleza'
 
@@ -130,3 +132,37 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3001",
     "http://127.0.0.1:3001",
 ]
+
+# Configurações do email server
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'djangophb@gmail.com'
+EMAIL_HOST_PASSWORD = 'vralergubbqdumbo'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'djangophb@gmail.com'
+PROTOCOL = "http"
+DOMAIN = "127.0.0.1:8000"
+SITE_NAME = 'Funetech'
+
+# Configurações do DJOSER para envio de email com links de ativações
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': False,
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'SEND_CONFIRMATION_EMAIL': True,
+    'LOGOUT_ON_PASSWORD_CHANGE': True,
+    'SET_PASSWORD_RETYPE': False,
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'users/activate/{uid}',
+    'SEND_ACTIVATION_EMAIL': True,
+    
+    'SERIALIZERS': {
+        'user_create':'funetech.serializers.UserSerializer',
+        'activation': 'djoser.email.ActivationEmail', 
+    },
+}
+
