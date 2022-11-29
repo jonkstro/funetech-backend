@@ -134,7 +134,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # Configurações do email server
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'djangophb@gmail.com'
 EMAIL_HOST_PASSWORD = 'vralergubbqdumbo'
@@ -164,6 +164,14 @@ DJOSER = {
         'user': 'funetech.serializers.UserCreateSerializer',
         'current_user': 'funetech.serializers.UserCreateSerializer',
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
-        'activation': 'djoser.email.ActivationEmail', 
-    }
+        'activation': 'djoser.serializers.ActivationSerializer', 
+    },
+    'EMAIL': {
+        'activation': 'djoser.email.ActivationEmail',
+        'confirmation': 'djoser.email.ConfirmationEmail',
+        'password_reset': 'djoser.email.PasswordResetEmail',
+    },
+    'PERMISSIONS':{
+    'user_delete': ['rest_framework.permissions.IsAdminUser'] # not allow delete
+    },
 }
