@@ -140,7 +140,7 @@ EMAIL_HOST_USER = 'djangophb@gmail.com'
 EMAIL_HOST_PASSWORD = 'vralergubbqdumbo'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'djangophb@gmail.com'
+DEAFULT_FROM_EMAIL = EMAIL_HOST_USER
 PROTOCOL = "http"
 DOMAIN = "127.0.0.1:8000"
 SITE_NAME = 'Funetech'
@@ -152,17 +152,18 @@ DJOSER = {
     'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'SEND_CONFIRMATION_EMAIL': True,
-    'LOGOUT_ON_PASSWORD_CHANGE': True,
-    'SET_PASSWORD_RETYPE': False,
-    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'SET_USERNAME_RETYPE': True,
+    'SET_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
     'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': 'users/activate/{uid}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
-    
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000/google', 'http://localhost:8000/facebook'],
     'SERIALIZERS': {
-        'user_create':'funetech.serializers.UserSerializer',
+        'user_create': 'funetech.serializers.UserCreateSerializer',
+        'user': 'funetech.serializers.UserCreateSerializer',
+        'current_user': 'funetech.serializers.UserCreateSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
         'activation': 'djoser.email.ActivationEmail', 
-    },
+    }
 }
-
