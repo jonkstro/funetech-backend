@@ -1,6 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
 from django.contrib import admin
+from funetech.views import UserActivationView
 
 from homenagem.views import HomenagemViewSet
 
@@ -21,4 +22,5 @@ urlpatterns = [
     # path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.urls.authtoken')),
     # path('auth/', include('djoser.social.urls')),
+    path('activate/<str:uid>/<str:token>/', UserActivationView.as_view()),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #para caso vá trabalhar com imagens
