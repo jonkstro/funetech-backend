@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 
 import requests
 
+# REALIZAR A ATIVAÇÃO DA CONTA APÓS CLICAR NO LINK DO DJOSER
 class UserActivationView(APIView):
     def get (self, request, uid, token):
         protocol = 'https://' if request.is_secure() else 'http://'

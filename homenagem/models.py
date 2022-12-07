@@ -11,7 +11,6 @@ class Homenagem(models.Model):
     cidade_falec = models.CharField(max_length=50, null=False, blank=False)
     memoria = models.TextField(max_length=255, null=True, blank=True)
     biografia = models.TextField(max_length=800, null=True, blank=True)
-    biografia = models.TextField(max_length=800, null=True, blank=True)
     foto = models.ImageField(upload_to='homenagem', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
