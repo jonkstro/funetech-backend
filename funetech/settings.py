@@ -157,9 +157,10 @@ DJOSER = {
     'SET_USERNAME_RETYPE': True,
     'SET_PASSWORD_RETYPE': True,
     # 'PASSWORD_RESET_CONFIRM_URL': 'auth/users/reset_password_confirm/{uid}/{token}',
-    'PASSWORD_RESET_CONFIRM_URL': r'auth/forgot/confirm/get?uid={uid}&token={token}',
+    'PASSWORD_RESET_CONFIRM_URL': 'auth/forgot/confirm/get?uid={uid}&token={token}',
     'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    # 'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'ACTIVATION_URL': '/auth/activate/get?uid={uid}&token={token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000/google', 'http://localhost:8000/facebook'],
     'SERIALIZERS': {
