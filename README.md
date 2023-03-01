@@ -427,6 +427,54 @@
             ```
             
     
+    ## DEPLOY:
+    
+    ### RAILWAY
+    
+    - Instalar WHITENOISE para renderizar os STATIC FILES
+    - Instalar PSYCOPG2 para utilizar banco de dados postgresql
+    - Configurar Banco de Dados
+    
+    ### 09 - Realizando Deploy no Railway
+    
+    - [ ]  Digitar no cmd: `pip install whitenoise`
+    - [ ]  Configurar o arquivo ************************settings.py************************ para funcionar o Whitenoise
+        - `Código:`
+            
+            ```python
+            # ADICIONAR EM INSTALLED APPS, ABAIXO DO DJANGO.CONTRIB.STATICFILES:
+            'whitenoise.runserver_nostatic',
+            
+            # ADICIONAR EM MIDDLEWARE, ABAIXO DO SECURITY MIDDLEWARE:
+            "whitenoise.middleware.WhiteNoiseMiddleware",
+            
+            # SUBSTITUIR O STATIC_URL PELO CÓDIGO ABAIXO:
+            # WHITENOISE
+            STATIC_URL = '/static/'
+            STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+            STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
+            # WHITENOISE
+            ```
+            
+    - [ ]  Digitar no cmd: `pip install psycopg2`
+    - [ ]  Configurar o arquivo ************************settings.py************************ para funcionar o BD Postgresql
+        - `Código:`
+            
+            ```python
+            # SUBSTITUIR O DEFAULT SQLITE3 PELO ABAIXO 
+            # (MUDAR AS VARIÁVEIS CONFORME O BD DO RAILWAY):
+            
+            'default': {
+                    'ENGINE': 'django.db.backends.postgresql',
+                    'NAME': 'railway',
+                    'USER': 'postgres',
+                    'PASSWORD': 'VJO2TAL3wh2br8Tok0r4',
+                    'HOST': 'containers-us-west-172.railway.app',
+                    'PORT': '6254',
+                }
+            ```
+            
+    
     ## TODO:
     
     CONFIGURAR O AWS ELASTIC BEANSTALK PRA DEPLOY [https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-django.html#python-django-configure-for-eb](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-django.html#python-django-configure-for-eb)
