@@ -1,5 +1,5 @@
 
-
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -16,7 +16,8 @@ SECRET_KEY = 'django-insecure-rvs_1oa#8=ji^nkq$*am+dkqia_r9*m725!mc%c0bk*t*#9taq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] #autorizar qualquer host acessar 
 
 
 # Application definition
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'homenagem',
     'rest_framework',
     'rest_framework.authtoken',
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,9 +74,17 @@ WSGI_APPLICATION = 'funetech.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'VJO2TAL3wh2br8Tok0r4',
+        'HOST': 'containers-us-west-172.railway.app',
+        'PORT': '6254',
     }
 }
 
@@ -112,7 +123,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
+# WHITENOISE
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
+# WHITENOISE
 
 # Definindo as pastas de imagens
 MEDIA_ROOT = 'imagens'
@@ -135,8 +151,8 @@ CORS_ALLOWED_ORIGINS = [
 
 # Configurações do email server
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'djangophb@gmail.com'
 EMAIL_HOST_PASSWORD = 'vralergubbqdumbo'
 EMAIL_PORT = 587
@@ -144,7 +160,8 @@ EMAIL_USE_TLS = True
 DEAFULT_FROM_EMAIL = EMAIL_HOST_USER
 PROTOCOL = "http"
 # DOMAIN = "127.0.0.1:8000"
-DOMAIN = "127.0.0.1:3000" #frontend
+# DOMAIN = "127.0.0.1:3000" #frontend
+DOMAIN = "funetech.vercel.app" #frontend
 SITE_NAME = 'Funetech'
 
 # Configurações do DJOSER para envio de email com links de ativações
