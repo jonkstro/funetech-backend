@@ -211,11 +211,11 @@ REST_FRAMEWORK = {
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:3001",
-    "http://127.0.0.1:3001",
-    'http://web-production-853d.up.railway.app',
-    'http://localhost:3000',
-    'http://funetech.vercel.app'
+    "https://.localhost:3000",
+    "https://.127.0.0.1:3000",
+    "https://.localhost:3001",
+    "https://.127.0.0.1:3001",
+    'https://.web-production-853d.up.railway.app',
+    'https://.localhost:3000',
+    'https://.funetech.vercel.app'
 ]
