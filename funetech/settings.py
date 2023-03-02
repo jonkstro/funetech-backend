@@ -147,9 +147,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3001",
     "http://127.0.0.1:3001",
-    'https://web-production-853d.up.railway.app/',
-    'http://localhost:3000/',
-    'https://funetech.vercel.app/'
+    'http://web-production-853d.up.railway.app',
+    'http://localhost:3000',
+    'http://funetech.vercel.app'
 ]
 
 # Configurações do email server
@@ -215,7 +215,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3001",
     "http://127.0.0.1:3001",
-    'https://web-production-853d.up.railway.app/',
-    'http://localhost:3000/',
-    'https://funetech.vercel.app/'
+    'http://web-production-853d.up.railway.app',
+    'http://localhost:3000',
+    'http://funetech.vercel.app'
 ]
