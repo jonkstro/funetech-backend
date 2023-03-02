@@ -207,4 +207,8 @@ REST_FRAMEWORK = {
 }
 
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-853d.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = [
+	'https://web-production-853d.up.railway.app/',
+	'http://localhost:3000/',
+	'https://funetech.vercel.app/'
+	]
