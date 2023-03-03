@@ -140,17 +140,20 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configurar os endereços que poderão acessar ao servidor
-CORS_ALLOWED_ORIGINS = [
-    # "https://example.com",
-    # "https://sub.example.com",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:3001",
-    "http://127.0.0.1:3001",
-    'http://web-production-853d.up.railway.app',
-    'http://localhost:3000',
-    'http://funetech.vercel.app'
-]
+#CORS_ALLOWED_ORIGINS = [
+#    # "https://example.com",
+#    # "https://sub.example.com",
+#    "http://localhost:3000",
+#    "http://127.0.0.1:3000",
+#    "http://localhost:3001",
+#    "http://127.0.0.1:3001",
+#    'http://web-production-853d.up.railway.app',
+#    'http://localhost:3000',
+#    'http://funetech.vercel.app'
+#]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 # Configurações do email server
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
