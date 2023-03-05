@@ -77,7 +77,7 @@ DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
+    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
@@ -160,7 +160,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'djangophb@gmail.com'
-EMAIL_HOST_PASSWORD = 'vralergubbqdumbo'
+EMAIL_HOST_PASSWORD = 'nxiijisbdygpxneb'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEAFULT_FROM_EMAIL = EMAIL_HOST_USER
@@ -183,7 +183,7 @@ DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'auth/forgot/confirm/get?uid={uid}&token={token}',
     'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
     # 'ACTIVATION_URL': 'activate/{uid}/{token}',
-    'ACTIVATION_URL': '/auth/activate/get?uid={uid}&token={token}',
+    'ACTIVATION_URL': 'auth/activate/get?uid={uid}&token={token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000/google', 'http://localhost:8000/facebook'],
     'SERIALIZERS': {
